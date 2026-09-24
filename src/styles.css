@@ -187,7 +187,7 @@
 .desktop-nav a { color: var(--muted-foreground); font-size: .78rem; font-weight: 600; transition: color .2s; }
 .desktop-nav a:hover { color: var(--foreground); }
 .nav-actions { justify-self: end; display: flex; align-items: center; gap: .25rem; }
-.nav-icon, .placeholder-icon { width: 2.5rem; height: 2.5rem; display: grid; place-items: center; color: var(--muted-foreground); }
+.nav-icon, .placeholder-icon { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; color: var(--muted-foreground); }
 .placeholder-icon { opacity: .55; cursor: not-allowed; }
 .nav-icon svg, .placeholder-icon svg { width: 1.05rem; height: 1.05rem; }
 .mobile-menu-button { display: none; }
