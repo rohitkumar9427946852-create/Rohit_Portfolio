@@ -316,9 +316,9 @@ function Contact() {
       return;
     }
     setErrors({});
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const serviceId = import.meta.env["VITE_EMAILJS_SERVICE_ID"];
+    const templateId = import.meta.env["VITE_EMAILJS_TEMPLATE_ID"];
+    const publicKey = import.meta.env["VITE_EMAILJS_PUBLIC_KEY"];
     if (!serviceId || !templateId || !publicKey) { setStatus("error"); return; }
     setStatus("sending");
     try {
@@ -342,10 +342,10 @@ function Contact() {
           <div className="resume-actions reveal"><Button asChild><a href={portfolio.resumePath} download><Download />Download Resume</a></Button><Button asChild variant="outline"><a href={portfolio.resumePath} target="_blank" rel="noreferrer"><ExternalLink />View Resume</a></Button></div>
         </div>
         <form className="contact-form reveal" onSubmit={submit} noValidate>
-          <div className="form-field"><label htmlFor="contact-name">Name</label><Input id="contact-name" name="name" autoComplete="name" maxLength={100} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} placeholder="Your name" />{errors.name ? <span id="name-error" className="field-error">{errors.name}</span> : null}</div>
-          <div className="form-field"><label htmlFor="contact-email">Email</label><Input id="contact-email" name="email" type="email" autoComplete="email" maxLength={255} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} placeholder="you@example.com" />{errors.email ? <span id="email-error" className="field-error">{errors.email}</span> : null}</div>
-          <div className="form-field form-full"><label htmlFor="contact-subject">Subject</label><Input id="contact-subject" name="subject" maxLength={150} aria-invalid={Boolean(errors.subject)} aria-describedby={errors.subject ? "subject-error" : undefined} placeholder="What would you like to discuss?" />{errors.subject ? <span id="subject-error" className="field-error">{errors.subject}</span> : null}</div>
-          <div className="form-field form-full"><label htmlFor="contact-message">Message</label><Textarea id="contact-message" name="message" maxLength={2000} aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-error" : undefined} placeholder="Write your message here..." />{errors.message ? <span id="message-error" className="field-error">{errors.message}</span> : null}</div>
+          <div className="form-field"><label htmlFor="contact-name">Name</label><Input id="contact-name" name="name" autoComplete="name" maxLength={100} aria-invalid={Boolean(errors["name"])} aria-describedby={errors["name"] ? "name-error" : undefined} placeholder="Your name" />{errors["name"] ? <span id="name-error" className="field-error">{errors["name"]}</span> : null}</div>
+          <div className="form-field"><label htmlFor="contact-email">Email</label><Input id="contact-email" name="email" type="email" autoComplete="email" maxLength={255} aria-invalid={Boolean(errors["email"])} aria-describedby={errors["email"] ? "email-error" : undefined} placeholder="you@example.com" />{errors["email"] ? <span id="email-error" className="field-error">{errors["email"]}</span> : null}</div>
+          <div className="form-field form-full"><label htmlFor="contact-subject">Subject</label><Input id="contact-subject" name="subject" maxLength={150} aria-invalid={Boolean(errors["subject"])} aria-describedby={errors["subject"] ? "subject-error" : undefined} placeholder="What would you like to discuss?" />{errors["subject"] ? <span id="subject-error" className="field-error">{errors["subject"]}</span> : null}</div>
+          <div className="form-field form-full"><label htmlFor="contact-message">Message</label><Textarea id="contact-message" name="message" maxLength={2000} aria-invalid={Boolean(errors["message"])} aria-describedby={errors["message"] ? "message-error" : undefined} placeholder="Write your message here..." />{errors["message"] ? <span id="message-error" className="field-error">{errors["message"]}</span> : null}</div>
           <div className="form-submit form-full"><Button size="lg" type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send Message"}<Send /></Button><div className={cn("form-status", status)} role="status" aria-live="polite">{status === "success" ? "Message sent successfully!" : status === "error" ? "Something went wrong. Please try again." : ""}</div></div>
         </form>
       </div>
